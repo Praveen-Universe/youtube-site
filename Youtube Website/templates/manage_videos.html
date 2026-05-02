@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='manage_videos.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Manage Videos</h2>
+            </div>
+
+            <div class="page">
+                <a href="/content">Add Videos</a>
+                <a href="/managevideos">Manage Videos</a>
+            </div>
+            <a href="/login">
+                <button style="background-color: white;" onclick="return confirmLogout()">Logout</button>
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>Existing Videos</h1>
+
+            <table border="1" width="100%">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+
+                {% for item in videos %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>{{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    <td>
+                        <a href="/edit_content/{{ item[0] }}">
+                            <button class="edit">Edit 🖊</button>
+                        </a>
+
+                        <a href="/delete_video/{{ item[0] }}"
+                            onclick="return confirm('Are you sure you want to delete this video?')">
+                            <button class="delete">Delete ❌</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function confirmLogout() {
+            let result = confirm("Are you sure you want to logout?");
+
+            if (result) {
+                alert("Logged out successfully!");
+                return true;  // proceed to logout
+            } else {
+                return false; // cancel logout
+            }
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+</body >
+
+</html >

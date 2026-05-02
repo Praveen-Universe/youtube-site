@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='video.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                {% if session.get('admin') %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Admin</h2>
+                {% else %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath</h2>
+                {% endif %}
+            </div>
+
+            <div>
+                <div class="page">
+                    {% if session.get('admin') %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/about">About</a>
+
+                    <!-- ✅ Admin Dashboard -->
+                    {% if session.get('is_admin') %}
+                    <a href="/admin">Admin Dashboard</a>
+                    {% endif %}
+
+                    {% else %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/announcement">Live Class</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/profile">Profile</a>
+                    {% endif %}
+                </div>
+
+                {% if session.get('admin') %}
+                <a href="/logout" onclick="return confirmLogout()"><button  style="background-color: white;">Logout</button></a>
+                {% else %}
+                <a href="/login"><button style="background-color: white;">Login</button></a>
+                <a href="https://www.youtube.com/@tamilpolyglotpremnath8808?sub_confirmation=1" target="_blank">
+                    <button>Subscribe</button>
+                </a>
+                {% endif %}
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Learn Languages <span>Through Tamil</span></h1>
+    </div>
+
+    <div class="container">
+
+        <!-- ✅ STATIC CARDS -->
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/japanese.jpeg')}}">
+            <div class="card-content">
+                <h3>Japanese</h3>
+                <p>Hiragana, Katakana & JLPT N5</p>
+                <a href="https://www.youtube.com/watch?v=sJprAORmssg&list=PLyvG9YapLq1aTtEhAhx3yDghdZeFYlvnE"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/french.jpeg')}}">
+            <div class="card-content">
+                <h3>French</h3>
+                <p>Grammar & Speaking</p>
+                <a href="https://www.youtube.com/watch?v=HlZOaWbBDqQ&list=PLyvG9YapLq1ZgqKsQOwIhLzK3zkamfotT"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/korean.jpeg')}}">
+            <div class="card-content">
+                <h3>Korean</h3>
+                <p>Hangul & Basics</p>
+                <a href="https://www.youtube.com/watch?v=AeD3MtIc_rw&list=PLyvG9YapLq1bxoTQXPieeyWRMUBqN5jkh"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/chinese.jpeg')}}">
+            <div class="card-content">
+                <h3>Chinese</h3>
+                <p>HSK & Speaking</p>
+                <a href="https://www.youtube.com/watch?v=hlxx4z1o0E4&list=PLyvG9YapLq1aeDHLyLy1gctADgUzbzefi"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/german.jpeg')}}">
+            <div class="card-content">
+                <h3>German</h3>
+                <p>Basic Grammar</p>
+                <a href="https://www.youtube.com/watch?v=6DKtmw9AYAc&list=PLyvG9YapLq1b2E5FObWjhUKQTlzxRdc8D"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/spanish.jpeg')}}">
+            <div class="card-content">
+                <h3>Spanish</h3>
+                <p>Basic Phrases</p>
+                <a href="https://www.youtube.com/watch?v=OF5IMCrUuVU&list=PLyvG9YapLq1aL-BXNCcMzHe95-EGiZovn"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/portuguese.jpeg')}}">
+            <div class="card-content">
+                <h3>Portuguese</h3>
+                <p>Beginner Lessons</p>
+                <a href="https://www.youtube.com/watch?v=Ur3x0ggeex4&list=PLyvG9YapLq1bsn8hYlFx2NVmEgOmMVDGd"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/abroad.jpeg')}}">
+            <div class="card-content">
+                <h3>Abroad Guidance</h3>
+                <p>Study Abroad Tips</p>
+                <a href="https://www.youtube.com/watch?v=u6gRitIatj0&list=PLyvG9YapLq1ZA5kz4j0ybkanrUonIFydn"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{{url_for('static', filename='image/questions.jpeg')}}">
+            <div class="card-content">
+                <h3>Question Clearing</h3>
+                <p>Doubt Solving</p>
+                <a href="https://www.youtube.com/watch?v=OsdpoHMi0UA&list=PLyvG9YapLq1Y7Pn4d-TIhWLGDrGBGY1GQ"
+                    target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+
+        <!-- ✅ DYNAMIC VIDEOS (FROM ADMIN PANEL) -->
+        {% for video in videos %}
+        <div class="card">
+            <img src="{{ video.thumbnail }}" alt="{{ video.title }}">
+            <div class="card-content">
+                <h3>{{ video.title }}</h3>
+                <p>{{ video.description }}</p>
+                <a href="{{ video.link }}" target="_blank" class="btn">Watch Now ▶</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function confirmLogout() {
+            let logoutConfirm = confirm('Are you sure you want to logout?');
+            
+            if (logoutConfirm) {
+                alert("✅ Logged out successfully!");
+            }
+            return logoutConfirm;
+        }
+    </script>
+
+</body>
+
+</html>

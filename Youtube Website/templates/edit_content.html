@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_content.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <header>
+            <nav>
+                <div>
+                    <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                    <h2>Tamil Polyglot Premnath | Edit Video</h2>
+                </div>
+
+                <div class="page">
+                    <a href="/content">Add Videos</a>
+                    <a href="/managevideos">Manage Videos</a>
+                </div>
+                <a href="/login">
+                    <button style="background-color: white;" onclick="return confirmLogout()">Logout</button>
+                </a>
+            </nav>
+        </header>
+    </header>
+
+    <div class="container">
+        <div class="card">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <!-- Title -->
+                <label>Title:</label><br>
+                <input type="text" name="title" value="{{ video[1] }}" required><br><br>
+
+                <!-- Description -->
+                <label>Description:</label><br>
+                <textarea name="description" required>{{ video[2] }}</textarea><br><br>
+
+                <!-- Link -->
+                <label>Video Link:</label><br>
+                <input type="text" name="link" value="{{ video[3] }}" required><br><br>
+
+                <!-- Current Image -->
+                <label>Current Image:</label><br>
+                {% if video[4] %}
+                <img src="/static/uploads/{{ video[4] }}" width="120"><br><br>
+                {% else %}
+                <p>No image uploaded</p>
+                {% endif %}
+
+                <!-- Upload New Image -->
+                <label>Change Image:</label><br>
+                <input type="file" name="image"><br><br>
+
+                <!-- Buttons -->
+                <button type="submit" class="btn" onclick="return handleUpdate()">Update</button>
+                <a href="/managevideos">
+                    <button type="button" class="cancel">Cancel</button>
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function handleUpdate() {
+            let confirmUpdate = confirm("Are you sure you want to update this video?");
+            
+            if (confirmUpdate) {
+                alert("✅ Video updated successfully!");
+                return true;  // submit form
+            } else {
+                return false; // cancel
+            }
+        }
+
+        function confirmLogout() {
+            let logoutConfirm = confirm('Are you sure you want to logout?');
+            
+            if (logoutConfirm) {
+                alert("✅ Logged out successfully!");
+            }
+            return logoutConfirm;
+        }
+    </script>
+
+</body>
+
+</html>

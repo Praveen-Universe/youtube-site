@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Admin Dashboard<h2>
+            </div>
+
+            <div class="page">
+            <a href="/">Home</a>
+            <a href="/language">Languages</a>
+            <a href="/playlist">Playlists</a>
+            <a href="/about">About</a>
+            <a href="/admin">Admin Dashboard</a>
+            </div>
+            <a href="/login">
+                <button style="background-color: white;" onclick="return confirmLogout()">Logout</button>
+            </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h3>Manage Users</h3>
+            <p>View, delete or update users.</p>
+            <a href="/users"><button class="btn">Go →</button></a>
+        </div>
+
+        <div class="card">
+            <h3>Manage Content</h3>
+            <p>Update playlists, announcements, etc.</p>
+            <a href="/content"><button class="btn">Go →</button></a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function confirmLogout() {
+            let result = confirm("Are you sure you want to logout?");
+
+            if (result) {
+                alert("✅ Logged out successfully!");
+                return true;  // proceed to logout
+            } else {
+                return false; // cancel logout
+            }
+        }
+    </script>
+
+</body>
+
+</html>

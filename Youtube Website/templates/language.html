@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='language.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                {% if session.get('admin') %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Admin</h2>
+                {% else %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath</h2>
+                {% endif %}
+            </div>
+
+            <div>
+                <div class="page">
+                    {% if session.get('admin') %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/about">About</a>
+
+                    <!-- ✅ Admin Dashboard -->
+                    {% if session.get('is_admin') %}
+                    <a href="/admin">Admin Dashboard</a>
+                    {% endif %}
+
+                    {% else %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/announcement">Live Class</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/profile">Profile</a>
+                    {% endif %}
+                </div>
+
+                {% if session.get('admin') %}
+                <a href="/logout" onclick="return confirmLogout()"><button  style="background-color: white;">Logout</button></a>
+                {% else %}
+                <a href="/login"><button style="background-color: white;">Login</button></a>
+                <a href="https://www.youtube.com/@tamilpolyglotpremnath8808?sub_confirmation=1" target="_blank">
+                    <button>Subscribe</button>
+                </a>
+                {% endif %}
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Japanese -->
+        <div class="card">
+            <div class="top">
+                <div class="code">JP</div>
+                <div class="title">Japanese</div>
+                <div class="desc">Top language in technology & robotics</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>Japan</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>125M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>130M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Kanji, Hiragana, Katakana</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Konnichiwa</span> <span>Hello</span></div>
+                    <div><span>Hajimemashite</span> <span>Nice to meet you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chinese -->
+        <div class="card">
+            <div class="top">
+                <div class="code">CN</div>
+                <div class="title">Chinese</div>
+                <div class="desc">1st largest spoken language in the world</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>China, Taiwan, Singapore</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>1.1B</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>1.2B</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Simplified & Traditional Chinese</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Nǐ hǎo</span> <span>Hello</span></div>
+                    <div><span>Xièxiè</span> <span>Thank you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- French -->
+        <div class="card">
+            <div class="top">
+                <div class="code">FR</div>
+                <div class="title">French</div>
+                <div class="desc">2nd most widely learned language worldwide</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>France, Canada, Belgium, Africa</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>80M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>300M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Latin</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Bonjour</span> <span>Hello</span></div>
+                    <div><span>Enchanté</span> <span>Nice to meet you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- German -->
+        <div class="card">
+            <div class="top">
+                <div class="code">DE</div>
+                <div class="title">German</div>
+                <div class="desc">Most spoken native language in Europe</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>Germany, Austria, Switzerland</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>95M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>130M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Latin</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Hallo</span> <span>Hello</span></div>
+                    <div><span>Danke</span> <span>Thank you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spanish -->
+        <div class="card">
+            <div class="top">
+                <div class="code">ES</div>
+                <div class="title">Spanish</div>
+                <div class="desc">2nd largest native spoken language in the world</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>Spain, Mexico, Latin America</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>485M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>600M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Latin</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Hola</span> <span>Hello</span></div>
+                    <div><span>Mucho gusto</span> <span>Nice to meet you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Korean -->
+        <div class="card">
+            <div class="top">
+                <div class="code">KR</div>
+                <div class="title">Korean</div>
+                <div class="desc">Popular due to K-culture</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>South Korea, North Korea</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>80M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>85M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Hangul</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Annyeonghaseyo</span> <span>Hello</span></div>
+                    <div><span>Gamsahamnida</span> <span>Thank you</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portuguese -->
+        <div class="card">
+            <div class="top">
+                <div class="code">PT</div>
+                <div class="title">Portuguese</div>
+                <div class="desc">6th most spoken language globally</div>
+            </div>
+
+            <div class="bottom">
+                <div class="grid">
+                    <div class="box">
+                        <small>COUNTRIES</small>
+                        <div>Brazil, Portugal, Africa</div>
+                    </div>
+                    <div class="box">
+                        <small>NATIVE SPEAKERS</small>
+                        <div>230M</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="box">
+                        <small>TOTAL SPEAKERS</small>
+                        <div>260M</div>
+                    </div>
+                    <div class="box">
+                        <small>SCRIPT</small>
+                        <div>Latin</div>
+                    </div>
+                </div>
+
+                <div class="phrases">
+                    <div><span>Olá</span> <span>Hello</span></div>
+                    <div><span>Prazer em conhecê-lo(a)</span> <span>Nice to meet you</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function confirmLogout() {
+            let logoutConfirm = confirm('Are you sure you want to logout?');
+            
+            if (logoutConfirm) {
+                alert("✅ Logged out successfully!");
+            }
+            return logoutConfirm;
+        }
+    </script>
+
+</body>
+
+</html>

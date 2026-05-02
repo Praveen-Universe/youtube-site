@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath</h2>
+            </div>
+
+            <div>
+                <div class="page">
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/announcement">Live Class</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/profile">Profile</a>
+                </div>
+                <a href="/login"><button style="background-color: white;">Login</button></a>
+                <a href="https://www.youtube.com/@tamilpolyglotpremnath8808?sub_confirmation=1" target="_blank"
+                    style="border: none;">
+                    <button>Subscribe</button>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+
+                <div class="card">
+
+                    <h1 style="padding-bottom: 20px;">Secure Login</h1>
+
+                    <div class="tabs">
+                        <button onclick="showForm('user')" class="active">User</button>
+                        <button onclick="showForm('admin')">Admin</button>
+                        <button onclick="showForm('register')">Register</button>
+                    </div>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div style="margin-bottom:15px;">
+                                {% for category, message in messages %}
+                                    <p class="{{ category }}">{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+
+                    <form class="form-box active" id="userForm" method="POST">
+                        <input type="email" name="email" placeholder="User Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">User Login</button>
+                    </form>
+
+                    <form class="form-box" id="adminForm" method="POST">
+                        <input type="text" name="username" placeholder="Admin Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Admin Login</button>
+                    </form>
+
+                    <form class="form-box" id="registerForm" method="POST">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Create Account</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function showForm(type) {
+            document.querySelectorAll(".form-box").forEach(f => f.classList.remove("active"));
+            document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
+
+            if (type === "user") {
+                document.getElementById("userForm").classList.add("active");
+                document.querySelectorAll(".tabs button")[0].classList.add("active");
+            }
+            else if (type === "admin") {
+                document.getElementById("adminForm").classList.add("active");
+                document.querySelectorAll(".tabs button")[1].classList.add("active");
+            }
+            else {
+                document.getElementById("registerForm").classList.add("active");
+                document.querySelectorAll(".tabs button")[2].classList.add("active");
+            }
+        }
+
+        // ADMIN LOGIN
+        document.getElementById("adminForm").addEventListener("submit", function (e) {
+            let username = this.username.value;
+            let password = this.password.value;
+
+            if (username === "Premnath" && password === "premnath@123") {
+                alert("✅ Admin Login Successful!");
+            } else {
+                alert("❌ Invalid Admin Credentials!");
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

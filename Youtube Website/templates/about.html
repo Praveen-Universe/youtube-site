@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div>
+                {% if session.get('admin') %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Admin</h2>
+                {% else %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath</h2>
+                {% endif %}
+            </div>
+
+            <div>
+                <div class="page">
+                    {% if session.get('admin') %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/about">About</a>
+
+                    <!-- ✅ Admin Dashboard -->
+                    {% if session.get('is_admin') %}
+                    <a href="/admin">Admin Dashboard</a>
+                    {% endif %}
+
+                    {% else %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/announcement">Live Class</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/profile">Profile</a>
+                    {% endif %}
+                </div>
+
+                {% if session.get('admin') %}
+                <a href="/logout" onclick="return confirmLogout()"><button style="background-color: white;">Logout</button></a>
+                {% else %}
+                <a href="/login"><button style="background-color: white;">Login</button></a>
+                <a href="https://www.youtube.com/@tamilpolyglotpremnath8808?sub_confirmation=1" target="_blank">
+                    <button>Subscribe</button>
+                </a>
+                {% endif %}
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Who We Are</h2>
+            <p><strong>Tamil Polyglot Premnath</strong> is a Tamil-language educational YouTube channel dedicated to
+                helping Tamil speakers learn multiple foreign languages in a fun and effective way. The channel is
+                hosted by <strong>Premnath Paramasivam</strong>, a passionate language educator and polyglot who creates
+                lessons in Tamil to make learning accessible and enjoyable for learners of all ages.</p>
+
+            <p>“மொழி அறிவே ஞானத்தின் வாயிற்படி” — <em>Language knowledge is the gateway to wisdom.</em> This guiding
+                philosophy is at the heart of the channel.</p>
+
+            <p>Through the channel, Premnath teaches languages including <strong>Japanese, Mandarin Chinese, French,
+                    German, Spanish, Korean, and Portuguese</strong>, with content ranging from beginner lessons like
+                alphabets and basic vocabulary to advanced topics.</p>
+
+            <p>The channel also supports <strong>online language classes</strong>, offering structured learning beyond
+                YouTube videos. Contact details are shared for those interested in personalized coaching.</p>
+
+            <p>With a growing community of language learners, the channel has become a popular resource for Tamil
+                speakers eager to expand their linguistic skills and cultural understanding.</p>
+
+            <p>Visit the channel: <a href="https://www.youtube.com/@tamilpolyglotpremnath8808/playlists"
+                    target="_blank">Tamil Polyglot Premnath on YouTube</a></p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+    <script>
+        function confirmLogout() {
+            let logoutConfirm = confirm('Are you sure you want to logout?');
+            
+            if (logoutConfirm) {
+                alert("✅ Logged out successfully!");
+            }
+            return logoutConfirm;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_profile.css') }}">
+</head>
+
+<body>
+
+<header>
+        <nav>
+            <div>
+                {% if session.get('is_admin') %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | Admin</h2>
+                {% else %}
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath</h2>
+                {% endif %}
+            </div>
+
+            <div>
+                <div class="page">
+                    {% if session.get('is_admin') %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/about">About</a>
+
+                    <!-- ✅ Admin Dashboard -->
+                    {% if session.get('is_admin') %}
+                    <a href="/admin">Admin Dashboard</a>
+                    {% endif %}
+
+                    {% else %}
+                    <a href="/">Home</a>
+                    <a href="/language">Languages</a>
+                    <a href="/playlist">Playlists</a>
+                    <a href="/announcement">Live Class</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/profile">Profile</a>
+                    {% endif %}
+                </div>
+
+                {% if session.get('admin') %}
+                <a href="/logout"><button style="background-color: white;">Logout</button></a>
+                {% else %}
+                <a href="/login"><button style="background-color: white;">Login</button></a>
+                <a href="https://www.youtube.com/@tamilpolyglotpremnath8808?sub_confirmation=1" target="_blank">
+                    <button>Subscribe</button>
+                </a>
+                {% endif %}
+
+            </div>
+        </nav>
+    </header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>✏️ Update Profile</h2>
+        <hr><br>
+
+        <form method="POST">
+
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ user[1] }}" required><br><br>
+
+            <label>Email:</label>
+            <input type="email" value="{{ user[2] }}" disabled><br><br>
+
+            <label>New Password:</label>
+            <input type="password" name="password" placeholder="Enter new password"><br><br>
+
+            <a href="/profile" onclick="return confirm('Are you sure you want to update your profile?');">
+                <button type="submit">Update Profile</button>
+            </a>
+
+        </form>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Tamil Polyglot Premnath</p>
+</footer>
+
+</body>
+</html>

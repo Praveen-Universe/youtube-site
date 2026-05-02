@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil Polyglot Premnath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_data.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div>
+                <img src="{{url_for('static', filename='image/logo.jpg')}}" alt="Logo">
+                <h2>Tamil Polyglot Premnath | User Details<h2>
+            </div>
+            <div class="page">
+            <a href="/users">User Details</a>
+            <a href="/feedback">User Feedback</a>
+            </div>
+            <a href="/login">
+                <button style="background-color: white;" onclick="return confirmLogout()">Logout</button>
+            </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h1>User Details</h1>
+            <center>
+                <table border="1" width="100%">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>{{ user[3] }}</td>
+                        <td>
+                            <a href="/delete_user/{{ user[0] }}"
+                                onclick="return confirm('Are you sure you want to delete this user?')">
+                                <button>Delete ❌</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </center>
+        </div>
+    </div>
+
+    <script>
+        function confirmLogout() {
+            let result = confirm("Are you sure you want to logout?");
+
+            if (result) {
+                alert("Logged out successfully!");
+                return true;  // proceed to logout
+            } else {
+                return false; // cancel logout
+            }
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Tamil Polyglot Premnath</p>
+    </footer>
+
+</body>
+
+</html>
